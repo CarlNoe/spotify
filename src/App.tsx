@@ -1,7 +1,12 @@
-import "./index.scss";
+import Sidebar from "./features/Sidebar/Sidebar";
 
 const App = () => {
-  return <div>Spotify</div>;
+  return (
+    <div>
+      <Sidebar />
+      Spotify
+    </div>
+  );
 };
 
 export default App;
