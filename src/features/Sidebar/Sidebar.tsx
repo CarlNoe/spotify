@@ -5,6 +5,7 @@ import heartIcon from "../../assets/Sidebar/likesong.svg";
 import SideNavButton from "./SideNavButton/SideNavButton";
 import SideActionButton from "./SideActionButton/SideActionButton";
 import "./Sidebar.scss";
+import PlaylistList from "./PlaylistList/PlaylistList";
 
 interface SidebarProps {
   onCreatePlaylistClick: () => void;
@@ -31,9 +32,7 @@ function Sidebar(props: SidebarProps) {
           onClick={() => {}}
         />
       </div>
-      <div className="playlists">
-        <h3>Playlists</h3>
-      </div>
+      <PlaylistList />
     </div>
   );
 }

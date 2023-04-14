@@ -1,8 +1,15 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createPlaylist } from './features/Playlists/PlaylistSlice';
-import Sidebar from './features/Sidebar/Sidebar';
-import InputPopup from './common/InputPopup/InputPopup';
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createPlaylist } from "./features/Playlists/PlaylistSlice";
+import Sidebar from "./features/Sidebar/Sidebar";
+import InputPopup from "./common/InputPopup/InputPopup";
+import { Route, Routes } from "react-router-dom";
+
+const AppRoutes = () => (
+  <Routes>
+    <Route path="/playlist/:playlistId" element={<div>Playlist</div>} />
+  </Routes>
+);
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -32,6 +39,7 @@ const App = () => {
           onClose={handleClosePopup}
         />
       )}
+      <AppRoutes />
     </div>
   );
 };
