@@ -1,5 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { generateRandomGradient } from "../../utils/gradient";
 
 interface Song {
   id: string;
@@ -16,6 +17,7 @@ interface PlaylistType {
   id: string;
   name: string;
   songs: Song[];
+  gradient: string;
 }
 
 const initialState: PlaylistType[] = [];
@@ -29,6 +31,7 @@ const playlistsSlice = createSlice({
         id: uuidv4(),
         name: action.payload,
         songs: [],
+        gradient: generateRandomGradient(),
       };
       state.push(newPlaylist);
     },
