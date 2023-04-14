@@ -1,0 +1,68 @@
+@import "../../styles/variables.scss";
+
+@keyframes appear {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.InputPopup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $color-bg;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 245px;
+  font-size: 19px;
+  padding-bottom: 10px;
+  position: relative;
+  border-radius: $border-radius;
+  animation: appear 0.12s ease-in-out;
+
+  .header {
+    width: 100%;
+    background-color: $color-bg-dark;
+    padding: 16px 0px;
+    h2 {
+      font-weight: 600;
+      margin: 0 0 0 20px;
+    }
+  }
+
+  input {
+    width: 80%;
+    opacity: 80%;
+    padding: 8px;
+    margin: 20px 0;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+  }
+
+  button {
+    margin-right: 16px;
+    align-self: flex-end;
+    padding: 4px 12px;
+    border-radius: 1rem;
+    font-size: inherit;
+    background-color: $color-spotify-green;
+  }
+}

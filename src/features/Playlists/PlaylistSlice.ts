@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 interface Song {
   id: string;
   title: string;
@@ -9,19 +10,14 @@ interface Song {
   popularity: number;
   favorite: boolean;
 }
+
 interface PlaylistType {
   id: string;
   name: string;
   songs: Song[];
 }
 
-interface PlaylistsState {
-  playlists: PlaylistType[];
-}
-
-const initialState: PlaylistsState = {
-  playlists: [],
-};
+const initialState: PlaylistType[] = [];
 
 const playlistsSlice = createSlice({
   name: "playlists",
@@ -33,13 +29,13 @@ const playlistsSlice = createSlice({
         name: action.payload,
         songs: [],
       };
-      state.playlists.push(newPlaylist);
+      state.push(newPlaylist);
     },
     addSongToPlaylist(
       state,
       action: PayloadAction<{ playlistId: string; song: Song }>
     ) {
-      const playlist = state.playlists.find(
+      const playlist = state.find(
         (playlist) => playlist.id === action.payload.playlistId
       );
       if (playlist) {

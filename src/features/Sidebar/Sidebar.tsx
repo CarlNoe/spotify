@@ -6,7 +6,13 @@ import SideNavButton from "./SideNavButton/SideNavButton";
 import SideActionButton from "./SideActionButton/SideActionButton";
 import "./Sidebar.scss";
 
-function Sidebar() {
+interface SidebarProps {
+  onCreatePlaylistClick: () => void;
+}
+
+function Sidebar(props: SidebarProps) {
+  const { onCreatePlaylistClick } = props;
+
   return (
     <div className="Sidebar">
       <img src={spotifyLogo} alt="Spotify Logo" className="logo" />
@@ -17,7 +23,7 @@ function Sidebar() {
         <SideActionButton
           iconPath={addIcon}
           text="Create Playlist"
-          onClick={() => {}}
+          onClick={onCreatePlaylistClick}
         />
         <SideActionButton
           iconPath={heartIcon}
