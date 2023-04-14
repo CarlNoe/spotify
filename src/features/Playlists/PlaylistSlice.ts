@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid';
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Song {
@@ -25,7 +26,7 @@ const playlistsSlice = createSlice({
   reducers: {
     createPlaylist(state, action: PayloadAction<string>) {
       const newPlaylist: PlaylistType = {
-        id: "temporary",
+        id: uuidv4(),
         name: action.payload,
         songs: [],
       };
