@@ -3,16 +3,8 @@ import { useDispatch } from "react-redux";
 import { createPlaylist } from "./features/Playlists/PlaylistSlice";
 import Sidebar from "./features/Sidebar/Sidebar";
 import InputPopup from "./common/InputPopup/InputPopup";
-import { Route, Routes } from "react-router-dom";
 import Footer from "./features/Footer/Footer";
-
-const AppRoutes = () => (
-  <Routes>
-    <Route path="/" element={<div>Home</div>} />
-    <Route path="/playlist/:playlistId" element={<div>Playlist</div>} />
-    <Route path="/liked" element={<div>Liked Songs</div>} />
-  </Routes>
-);
+import PageDisplayer from "./features/PageDisplayer/PageDisplayer";
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -43,7 +35,7 @@ const App = () => {
           onClose={handleClosePopup}
         />
       )}
-      <AppRoutes />
+      <PageDisplayer />
     </div>
   );
 };
