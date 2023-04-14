@@ -35,6 +35,7 @@ const playlistsSlice = createSlice({
       };
       state.push(newPlaylist);
     },
+
     addSongToPlaylist(
       state,
       action: PayloadAction<{ playlistId: string; song: Song }>
