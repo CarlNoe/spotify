@@ -6,6 +6,7 @@ import SideNavButton from "./SideNavButton/SideNavButton";
 import SideActionButton from "./SideActionButton/SideActionButton";
 import "./Sidebar.scss";
 import PlaylistList from "./PlaylistList/PlaylistList";
+import { Link } from "react-router-dom";
 
 interface SidebarProps {
   onCreatePlaylistClick: () => void;
@@ -16,7 +17,9 @@ function Sidebar(props: SidebarProps) {
 
   return (
     <div className="Sidebar">
-      <img src={spotifyLogo} alt="Spotify Logo" className="logo" />
+      <Link to="/" className="logo-container">
+        <img src={spotifyLogo} alt="Spotify Logo" className="logo" />
+      </Link>
       <nav>
         <SideNavButton iconPath={homeIcon} text="Home" onClick={() => {}} />
       </nav>
@@ -26,11 +29,7 @@ function Sidebar(props: SidebarProps) {
           text="Create Playlist"
           onClick={onCreatePlaylistClick}
         />
-        <SideActionButton
-          iconPath={heartIcon}
-          text="Liked Songs"
-          onClick={() => {}}
-        />
+        <SideActionButton iconPath={heartIcon} text="Liked Songs" to="/liked" />
       </div>
       <PlaylistList />
     </div>

@@ -7,7 +7,9 @@ import { Route, Routes } from "react-router-dom";
 
 const AppRoutes = () => (
   <Routes>
+    <Route path="/" element={<div>Home</div>} />
     <Route path="/playlist/:playlistId" element={<div>Playlist</div>} />
+    <Route path="/liked" element={<div>Liked Songs</div>} />
   </Routes>
 );
 
