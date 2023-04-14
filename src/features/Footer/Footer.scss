@@ -3,13 +3,14 @@
 .Footer {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100vw;
   height: $footer-height;
   background-color: $color-bg;
   z-index: 1;
   padding: 0 20px;
   display: flex;
   align-items: ceneter;
+  justify-content: space-between;
 
   &::before {
     opacity: 0.2;
