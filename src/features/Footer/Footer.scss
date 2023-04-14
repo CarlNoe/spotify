@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+
+.Footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  background-color: $color-bg;
+  z-index: 1;
+  padding: 0 20px;
+  display: flex;
+  align-items: ceneter;
+
+  &::before {
+    opacity: 0.2;
+    content: "";
+    position: absolute;
+    top: -16px;
+    left: 0;
+    width: 100%;
+    height: 16px;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      lightgray 100%
+    );
+  }
+}

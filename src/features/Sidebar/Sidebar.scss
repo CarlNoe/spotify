@@ -2,12 +2,12 @@
 
 .Sidebar {
   background-color: $color-sidebar;
-  width: 300px;
-  height: 100vh;
+  width: $sidebar-width;
+  height: calc(100vh - $footer-height);
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 2;
   padding: 0 10px 0 10px;
 
   .logo {
@@ -17,7 +17,7 @@
   .actions {
     display: flex;
     flex-direction: column;
-    margin: 0 20px
+    margin: 0 20px;
   }
 
   .playlists {
@@ -27,5 +27,4 @@
     overflow-y: auto;
     height: 100%;
   }
-
 }

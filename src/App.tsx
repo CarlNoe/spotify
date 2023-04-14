@@ -4,6 +4,7 @@ import { createPlaylist } from "./features/Playlists/PlaylistSlice";
 import Sidebar from "./features/Sidebar/Sidebar";
 import InputPopup from "./common/InputPopup/InputPopup";
 import { Route, Routes } from "react-router-dom";
+import Footer from "./features/Footer/Footer";
 
 const AppRoutes = () => (
   <Routes>
@@ -33,6 +34,7 @@ const App = () => {
   return (
     <div>
       <Sidebar onCreatePlaylistClick={handleCreatePlaylistClick} />
+      <Footer />
       {showPopup && (
         <InputPopup
           headerText="Create Playlist"

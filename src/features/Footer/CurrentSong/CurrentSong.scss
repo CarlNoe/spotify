@@ -1,0 +1,35 @@
+@import '../../../styles/variables.scss';
+
+.CurrentSong {
+  display: flex;
+  align-items: center;
+
+  .cover {
+    width: 75px;
+    height: 75px;
+    background-color: red;
+  }
+
+  .songInfo {
+    margin-left:12px;
+    display: flex;
+    flex-direction: column;
+
+    font-weight: 600;
+    .songName {
+        font-size: 18px;
+        color: $color-text-light;
+        margin-bottom: 4px;
+    }
+
+    .artistName {
+        font-size: 15px;
+        color: #b3b3b3;
+    }
+  }
+
+  img {
+    margin-left: 16px;
+    width: 24px;
+  }
+}
