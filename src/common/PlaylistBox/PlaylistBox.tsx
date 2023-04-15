@@ -16,7 +16,6 @@ function PlaylistBox(props: PlaylistBoxProps) {
       <div className="PlaylistBox">
         <div className="playlistImage" style={{ background: playlistGradient }}>
           <span>{playlistName}</span>
-          <span>{playlistYear}</span>
         </div>
         <span className="name">{playlistName}</span>
         <span className="year">{playlistYear}</span>
