@@ -1,23 +1,20 @@
 import "./SideNavButton.scss";
+import { Link } from "react-router-dom";
 
 interface SideNavButtonProps {
   iconPath: string;
   text: string;
-  onClick: () => void;
+  to: string;
 }
 
 function SideNavButton(props: SideNavButtonProps) {
-  const { iconPath, text, onClick } = props;
+  const { iconPath, text, to } = props;
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`SideNavButton`}
-    >
+    <Link to={to} className="SideNavButton">
       <img src={iconPath} alt={text} />
       <span>{text}</span>
-    </button>
+    </Link>
   );
 }
 

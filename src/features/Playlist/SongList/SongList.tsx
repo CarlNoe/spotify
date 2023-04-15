@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import {
@@ -9,9 +8,9 @@ import {
   toggleFavorite,
 } from "../playlistSlice";
 import "./SongList.scss";
-import heartGreen from "../../../assets/heartGreen.svg";
-import heart from "../../../assets/heart.svg";
 import ContextMenu from "../../../common/ContextMenu/ContextMenu";
+import TableRow from "./TableRow/TableRow";
+import { useContextMenu } from "./useContextMenu";
 
 interface SongListProps {
   songs: Song[];
@@ -26,28 +25,16 @@ function SongList(props: SongListProps) {
         state.playlist.find((playlist) => playlist.isLikedSongs)?.songs
     ) || [];
 
-  const [contextMenu, setContextMenu] = useState<{
-    x: number;
-    y: number;
-    song: Song | null;
-  }>({ x: 0, y: 0, song: null });
   const dispatch = useDispatch();
   const playlists = useSelector((state: RootState) => state.playlist);
 
-  const handleContextMenu = (event: React.MouseEvent, song: Song) => {
-    event.preventDefault();
-    setContextMenu({
-      x: event.clientX,
-      y: event.clientY,
-      song,
-    });
-  };
+  const { contextMenu, handleContextMenu, closeContextMenu } = useContextMenu();
 
   const handleClick = (playlistId: string) => {
     if (contextMenu.song) {
       dispatch(addSongToPlaylist({ playlistId, song: contextMenu.song }));
     }
-    setContextMenu({ x: 0, y: 0, song: null });
+    closeContextMenu();
   };
 
   const handleHeartClick = (song: Song) => {
@@ -89,28 +76,14 @@ function SongList(props: SongListProps) {
                 (likedSong) => likedSong.id === song.id
               );
               return (
-                <tr
+                <TableRow
                   key={song.id}
-                  onContextMenu={(event) => handleContextMenu(event, song)}
-                >
-                  <td className="indexTd">{index + 1}</td>
-                  <td className="likeTd">
-                    <img
-                      src={isLiked ? heartGreen : heart}
-                      alt="heart"
-                      onClick={() => handleHeartClick(song)}
-                    />
-                  </td>
-                  <td>{song.title}</td>
-                  <td>{song.year}</td>
-                  <td>{song.genre}</td>
-                  <td>{song.popularity}</td>
-                  <td>
-                    {Math.floor(song.duration / 60) +
-                      ":" +
-                      (song.duration % 60)}
-                  </td>
-                </tr>
+                  song={song}
+                  index={index}
+                  isLiked={isLiked}
+                  handleContextMenu={handleContextMenu}
+                  handleHeartClick={handleHeartClick}
+                />
               );
             })}
           </tbody>

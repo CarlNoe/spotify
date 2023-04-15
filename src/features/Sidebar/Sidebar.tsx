@@ -21,7 +21,7 @@ function Sidebar(props: SidebarProps) {
         <img src={spotifyLogo} alt="Spotify Logo" className="logo" />
       </Link>
       <nav>
-        <SideNavButton iconPath={homeIcon} text="Home" onClick={() => {}} />
+        <SideNavButton iconPath={homeIcon} text="Home" to="/" />
       </nav>
       <div className="actions">
         <SideActionButton
@@ -29,7 +29,11 @@ function Sidebar(props: SidebarProps) {
           text="Create Playlist"
           onClick={onCreatePlaylistClick}
         />
-        <SideActionButton iconPath={heartIcon} text="Liked Songs" to="/playlist/liked-songs" />
+        <SideActionButton
+          iconPath={heartIcon}
+          text="Liked Songs"
+          to="/playlist/liked-songs"
+        />
       </div>
       <PlaylistList />
     </div>
