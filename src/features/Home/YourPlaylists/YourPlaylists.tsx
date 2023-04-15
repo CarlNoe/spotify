@@ -1,6 +1,6 @@
 import { useSelector,useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { initializeLikedSongsPlaylist } from "../../Playlists/playlistsSlice";
+import { initializeLikedSongsPlaylist } from "../../Playlist/playlistSlice";
 import { RootState } from "../../../store";
 import "./YourPlaylists.scss";
 import PlaylistTile from "../../../common/PlaylistTile/PlaylistTile";
