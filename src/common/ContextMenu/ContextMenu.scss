@@ -1,0 +1,27 @@
+@import "../../styles/variables";
+
+.ContextMenu {
+  position: fixed;
+  background-color: $color-bg;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  padding: 0 0 8px 0;
+
+  header {
+    background-color: $color-bg-dark;
+    h3 {
+      font-size: 14px;
+      font-weight: 500;
+      padding: 12px 20px;
+    }
+  }
+
+  div {
+    padding: 8px 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: $color-bg-light;
+    }
+  }
+}

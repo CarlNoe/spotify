@@ -61,6 +61,42 @@ const playlistSlice = createSlice({
         });
       }
     },
+
+    addSongToLikedSongs(state, action: PayloadAction<Song>) {
+      const likedSongsPlaylist = state.find(
+        (playlist) => playlist.isLikedSongs
+      );
+      if (likedSongsPlaylist) {
+        const songAlreadyExists = likedSongsPlaylist.songs.some(
+          (song) => song.id === action.payload.id
+        );
+
+        if (!songAlreadyExists) {
+          likedSongsPlaylist.songs.push(action.payload);
+        }
+      }
+    },
+
+    removeSongFromLikedSongs(state, action: PayloadAction<string>) {
+      const likedSongsPlaylist = state.find(
+        (playlist) => playlist.isLikedSongs
+      );
+      if (likedSongsPlaylist) {
+        likedSongsPlaylist.songs = likedSongsPlaylist.songs.filter(
+          (song) => song.id !== action.payload
+        );
+      }
+    },
+
+    toggleFavorite(state, action: PayloadAction<string>) {
+      for (const playlist of state) {
+        const song = playlist.songs.find((song) => song.id === action.payload);
+        if (song) {
+          song.favorite = !song.favorite;
+          break;
+        }
+      }
+    },
   },
 });
 
@@ -68,6 +104,9 @@ export const {
   createPlaylist,
   addSongToPlaylist,
   initializeLikedSongsPlaylist,
+  addSongToLikedSongs,
+  removeSongFromLikedSongs,
+  toggleFavorite,
 } = playlistSlice.actions;
 
 export default playlistSlice.reducer;
