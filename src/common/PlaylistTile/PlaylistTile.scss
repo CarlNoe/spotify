@@ -6,9 +6,22 @@
   width: 362px;
   height: 100px;
   background: $color-bg-light;
+
+  &:hover {
+    background: $color-bg;
+  }
+
   .playlistImage {
     width: 100px;
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 29px;
+      height: 29px;
+    }
   }
 
   span {

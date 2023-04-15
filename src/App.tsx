@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createPlaylist } from "./features/Playlists/PlaylistSlice";
+import { createPlaylist } from "./features/Playlists/playlistsSlice";
 import Sidebar from "./features/Sidebar/Sidebar";
 import InputPopup from "./common/InputPopup/InputPopup";
 import Footer from "./features/Footer/Footer";

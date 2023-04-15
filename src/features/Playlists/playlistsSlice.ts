@@ -18,6 +18,7 @@ interface PlaylistType {
   name: string;
   songs: Song[];
   gradient: string;
+  isLikedSongs?: boolean;
 }
 
 const initialState: PlaylistType[] = [];
@@ -47,9 +48,26 @@ const playlistsSlice = createSlice({
         playlist.songs.push(action.payload.song);
       }
     },
+
+    initializeLikedSongsPlaylist(state) {
+      if (!state.some((playlist) => playlist.isLikedSongs)) {
+        state.push({
+          id: "liked-songs",
+          name: "Liked Songs",
+          songs: [],
+          gradient:
+            "linear-gradient(135deg, #4000F4 0%, #603AED 22.48%, #7C6EE6 46.93%, #979FE1 65.71%, #A2B3DE 77.68%, #ADC8DC 88.93%, #C0ECD7 100%)",
+          isLikedSongs: true,
+        });
+      }
+    },
   },
 });
 
-export const { createPlaylist, addSongToPlaylist } = playlistsSlice.actions;
+export const {
+  createPlaylist,
+  addSongToPlaylist,
+  initializeLikedSongsPlaylist,
+} = playlistsSlice.actions;
 
 export default playlistsSlice.reducer;

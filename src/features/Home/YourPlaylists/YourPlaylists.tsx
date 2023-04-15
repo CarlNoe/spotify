@@ -1,10 +1,20 @@
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { initializeLikedSongsPlaylist } from "../../Playlists/playlistsSlice";
 import { RootState } from "../../../store";
 import "./YourPlaylists.scss";
 import PlaylistTile from "../../../common/PlaylistTile/PlaylistTile";
 
+
+
 function YourPlaylists() {
   const playlists = useSelector((state: RootState) => state.playlists);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(initializeLikedSongsPlaylist());
+  }, [dispatch]);
 
   return (
     <div className="YourPlaylists">
@@ -16,6 +26,7 @@ function YourPlaylists() {
             playlistId={playlist.id}
             playlistName={playlist.name}
             playlistGradient={playlist.gradient}
+            isLikedSongs={playlist.isLikedSongs}
           />
         ))}
       </div>
