@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import {
@@ -8,9 +9,10 @@ import {
   toggleFavorite,
 } from "../playlistSlice";
 import "./SongList.scss";
+import heartGreen from "../../../assets/heartGreen.svg";
+import heart from "../../../assets/heart.svg";
 import ContextMenu from "../../../common/ContextMenu/ContextMenu";
-import TableRow from "./TableRow/TableRow";
-import { useContextMenu } from "./useContextMenu";
+import SongFiltering from "../SongFiltering/SongFiltering";
 
 interface SongListProps {
   songs: Song[];
@@ -25,16 +27,50 @@ function SongList(props: SongListProps) {
         state.playlist.find((playlist) => playlist.isLikedSongs)?.songs
     ) || [];
 
+  const [contextMenu, setContextMenu] = useState<{
+    x: number;
+    y: number;
+    song: Song | null;
+  }>({ x: 0, y: 0, song: null });
   const dispatch = useDispatch();
   const playlists = useSelector((state: RootState) => state.playlist);
 
-  const { contextMenu, handleContextMenu, closeContextMenu } = useContextMenu();
+  const [filter, setFilter] = useState("");
+  const [sortCriteria, setSortCriteria] = useState<
+    "title" | "year" | "genre" | "popularity" | "duration"
+  >("title");
+
+  const [filteredSongs, setFilteredSongs] = useState(songs);
+
+  useEffect(() => {
+    const filtered = songs
+      .filter((song) => song.title.toLowerCase().includes(filter.toLowerCase()))
+      .sort((a, b) => {
+        if (a[sortCriteria] < b[sortCriteria]) {
+          return -1;
+        }
+        if (a[sortCriteria] > b[sortCriteria]) {
+          return 1;
+        }
+        return 0;
+      });
+    setFilteredSongs(filtered);
+  }, [songs, filter, sortCriteria]);
+
+  const handleContextMenu = (event: React.MouseEvent, song: Song) => {
+    event.preventDefault();
+    setContextMenu({
+      x: event.clientX,
+      y: event.clientY,
+      song,
+    });
+  };
 
   const handleClick = (playlistId: string) => {
     if (contextMenu.song) {
       dispatch(addSongToPlaylist({ playlistId, song: contextMenu.song }));
     }
-    closeContextMenu();
+    setContextMenu({ x: 0, y: 0, song: null });
   };
 
   const handleHeartClick = (song: Song) => {
@@ -57,6 +93,12 @@ function SongList(props: SongListProps) {
         playlists={playlists}
         handleClick={handleClick}
       />
+      <SongFiltering
+        filter={filter}
+        setFilter={setFilter}
+        sortCriteria={sortCriteria}
+        setSortCriteria={setSortCriteria}
+      />
       <div className="tableWrapper">
         <table>
           <thead>
@@ -71,19 +113,33 @@ function SongList(props: SongListProps) {
             </tr>
           </thead>
           <tbody>
-            {songs.map((song, index) => {
+            {filteredSongs.map((song, index) => {
               const isLiked = likedSongs.some(
                 (likedSong) => likedSong.id === song.id
               );
               return (
-                <TableRow
+                <tr
                   key={song.id}
-                  song={song}
-                  index={index}
-                  isLiked={isLiked}
-                  handleContextMenu={handleContextMenu}
-                  handleHeartClick={handleHeartClick}
-                />
+                  onContextMenu={(event) => handleContextMenu(event, song)}
+                >
+                  <td className="indexTd">{index + 1}</td>
+                  <td className="likeTd">
+                    <img
+                      src={isLiked ? heartGreen : heart}
+                      alt="heart"
+                      onClick={() => handleHeartClick(song)}
+                    />
+                  </td>
+                  <td>{song.title}</td>
+                  <td>{song.year}</td>
+                  <td>{song.genre}</td>
+                  <td>{song.popularity}</td>
+                  <td>
+                    {Math.floor(song.duration / 60) +
+                      ":" +
+                      (song.duration % 60)}
+                  </td>
+                </tr>
               );
             })}
           </tbody>
@@ -92,5 +148,4 @@ function SongList(props: SongListProps) {
     </div>
   );
 }
-
 export default SongList;

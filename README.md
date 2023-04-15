@@ -54,7 +54,7 @@
 
 -   [X] Display spotify icon on top
 -   [X] Menu must contain
-    -   [ ] Link to home page
+    -   [X] Link to home page
     -   [X] Button to create a playlist
         -   [X] Click on it will open a modal with a text input and add button
         -   [X] When creating a playlist you need to generate a linear gradient background color. These color must be random
