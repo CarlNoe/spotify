@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.PlaylistBox {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 231px;
+  height: 288px;
+  background-color: $color-bg-dark;
+
+  &:hover {
+    background-color: $color-bg-light;
+  }
+
+  .playlistImage {
+    font-size: 35px;
+    font-weight: 600;
+    width: 191px;
+    height: 191px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .name {
+    font-size: 21px;
+    font-weight: 500;
+    margin-top: 26px;
+  }
+
+  .year {
+    margin-top: 6px;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 6px;
+    opacity: 50%;
+  }
+}
