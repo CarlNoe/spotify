@@ -29,7 +29,7 @@ function Sidebar(props: SidebarProps) {
           text="Create Playlist"
           onClick={onCreatePlaylistClick}
         />
-        <SideActionButton iconPath={heartIcon} text="Liked Songs" to="/liked" />
+        <SideActionButton iconPath={heartIcon} text="Liked Songs" to="/playlist/liked-songs" />
       </div>
       <PlaylistList />
     </div>

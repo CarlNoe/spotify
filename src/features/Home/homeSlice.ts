@@ -1,16 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { generateTop50Playlists } from "./homeSliceUtils";
-
-interface Song {
-  id: string;
-  title: string;
-  artist: string;
-  genre: string;
-  year: number;
-  duration: number;
-  popularity: number;
-}
-
+import { Song } from "../Playlist/playlistSlice";
 export interface Top50PlaylistType {
   id: string;
   name: string;

@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import playlistsReducer from "./features/Playlist/playlistSlice";
+import playlistReducer from "./features/Playlist/playlistSlice";
 import homeReducer from "./features/Home/homeSlice";
 
 export const store = configureStore({
   reducer: {
-    playlists: playlistsReducer,
+    playlist: playlistReducer,
     home: homeReducer,
   },
 });

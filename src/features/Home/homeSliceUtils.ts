@@ -21,6 +21,7 @@ export const generateTop50Playlists = (): Top50PlaylistType[] => {
         year: song.year,
         duration: song.duration,
         popularity: song.popularity,
+        favorite: false, // Add this line
       }));
 
     playlists.push({

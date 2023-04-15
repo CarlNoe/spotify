@@ -1,14 +1,12 @@
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { initializeLikedSongsPlaylist } from "../../Playlist/playlistSlice";
 import { RootState } from "../../../store";
 import "./YourPlaylists.scss";
 import PlaylistTile from "../../../common/PlaylistTile/PlaylistTile";
 
-
-
 function YourPlaylists() {
-  const playlists = useSelector((state: RootState) => state.playlists);
+  const playlists = useSelector((state: RootState) => state.playlist);
 
   const dispatch = useDispatch();
 

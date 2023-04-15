@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { generateRandomGradient } from "../../utils/gradient";
 
-interface Song {
+export interface Song {
   id: string;
   title: string;
   artist: string;
@@ -23,7 +23,7 @@ interface PlaylistType {
 
 const initialState: PlaylistType[] = [];
 
-const playlistsSlice = createSlice({
+const playlistSlice = createSlice({
   name: "playlists",
   initialState,
   reducers: {
@@ -68,6 +68,6 @@ export const {
   createPlaylist,
   addSongToPlaylist,
   initializeLikedSongsPlaylist,
-} = playlistsSlice.actions;
+} = playlistSlice.actions;
 
-export default playlistsSlice.reducer;
+export default playlistSlice.reducer;

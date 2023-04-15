@@ -4,15 +4,17 @@ import { RootState } from "../../../store";
 import "./PlaylistList.scss";
 
 function PlaylistList() {
-  const playlists = useSelector((state: RootState) => state.playlists);
+  const playlists = useSelector((state: RootState) => state.playlist);
 
   return (
     <ul className="PlaylistList">
-      {playlists.map((playlist) => (
-        <li key={playlist.id}>
-          <Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
-        </li>
-      ))}
+      {playlists
+        .filter((playlist) => !playlist.isLikedSongs)
+        .map((playlist) => (
+          <li key={playlist.id}>
+            <Link to={`/playlist/${playlist.id}`}>{playlist.name}</Link>
+          </li>
+        ))}
     </ul>
   );
 }
