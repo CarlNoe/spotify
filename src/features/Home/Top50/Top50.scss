@@ -1,0 +1,12 @@
+.Top50 {
+  h2 {
+    font-size: 38px;
+  }
+
+  .playlistList {
+    display: flex;
+    gap: 30px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+  }
+}

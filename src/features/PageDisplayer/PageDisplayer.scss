@@ -1,0 +1,17 @@
+@import "../../styles/variables.scss";
+
+.PageDisplayer {
+  width: calc(100vw - $sidebar-width);
+  height: calc(100vh - $footer-height);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  overflow: auto;
+  background: linear-gradient(
+    180deg,
+    #202020 0%,
+    #1f1f1f 25%,
+    #171717 100%,
+  );
+}

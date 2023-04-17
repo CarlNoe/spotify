@@ -1,0 +1,30 @@
+@import "../../styles/variables.scss";
+
+.Sidebar {
+  background-color: $color-sidebar;
+  width: $sidebar-width;
+  height: calc(100vh - $footer-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding: 0 10px 0 10px;
+
+  .logo {
+    margin: 30px 20px;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+  }
+
+  .playlists {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+    overflow-y: auto;
+    height: 100%;
+  }
+}

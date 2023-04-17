@@ -1,0 +1,39 @@
+@import "../../../styles/variables";
+
+.SongList {
+  .tableWrapper {
+    overflow: auto;
+    padding: 0 30px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      font-weight: 500;
+
+      th {
+        font-weight: 500;
+        text-align: left;
+        padding: 16px 0;
+      }
+
+      td {
+        padding: 16px 0;
+      }
+
+      tr {
+        &:hover {
+          background-color: $color-bg;
+        }
+      }
+
+      .likeTd {
+        img {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.MediaPlayer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .controls {
+    display: flex;
+    align-items: center;
+
+    .playBtn {
+      margin: 0 8px;
+    }
+
+    .previous {
+      margin-left: 16px;
+    }
+    .next {
+      margin-right: 16px;
+    }
+  }
+
+  .time {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    .currentTime {
+      margin-right: 8px;
+    }
+    .timeBar {
+      display: flex;
+      align-items: center;
+      width: 633px;
+      height: 7px;
+      border-radius: 3.5px;
+      background-color: #535353;
+    }
+    .totalTime {
+      margin-left: 8px;
+    }
+  }
+}

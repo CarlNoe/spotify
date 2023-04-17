@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+
+.PlaylistList {
+    margin-left: 20px;
+    font-size: 19px;
+    overflow-y: auto;
+    height: 500px;
+    li{
+        margin: 15px 0;
+    }
+}

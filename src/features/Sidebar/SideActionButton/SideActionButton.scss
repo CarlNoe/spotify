@@ -1,0 +1,16 @@
+.SideActionButton {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 19px;
+
+  img {
+    width: 30px;
+  }
+
+  span {
+    margin-left: 20px;
+  }
+}

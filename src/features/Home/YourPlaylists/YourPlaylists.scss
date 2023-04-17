@@ -1,0 +1,13 @@
+.YourPlaylists {
+  margin-bottom: 86px;
+  h2 {
+    font-size: 38px;
+  }
+
+  .playlistList {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 30px;
+  }
+}
